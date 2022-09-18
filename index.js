@@ -3,7 +3,9 @@ const app = express();
 const errorHandler = require('./Helpers/error-handler')
 const cors = require('cors');
 const bodyParser = require('body-parser');
+const connectToMongo=require('./DataContext/DataBase')
 
+connectToMongo();
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(cors());
