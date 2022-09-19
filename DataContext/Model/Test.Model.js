@@ -1,41 +1,34 @@
-import mongoose, { Model, Mongoose } from 'mongoose';
-const { Schema } = mongoose;
+const mongoose=require('mongoose')
 
-const testSchema = new Schema({
-    _id: {
-        typeof: mongoose.Types.ObjectId,
-        index: true,
-        unique: true
-    },
-    tag: {
-        typeof: String,
+const sechma = new mongoose.Schema({
+    TestName: {
+        type: String,
         required: true,
     },
     maximumNumber: {
-        typeof: Number,
+        type: Number,
         required: true,
     },
     passingNumber: {
-        typeof: Number,
+        type: Number,
         required: true
     },
     maximumTime: {
-        typeof: Number,
+        type: Number,
         unique: true
     },
     questionIds: {
-        typeof: []
+        type: [mongoose.Types.ObjectId]
     },
     createdOn: {
-        typeof: Date,
+        type: Date,
         default: Date.now
     },
     updatedOn: {
-        typeof: Date,
+        type: Date,
         default: Date.now
     }
-
 });
-const TestSchema = mongoose.model('testSchema', testSchema);
+const TestSchema = mongoose.model('testSchema', sechma);
 module.exports = TestSchema;
 

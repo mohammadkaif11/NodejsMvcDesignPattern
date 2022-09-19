@@ -1,61 +1,53 @@
-import mongoose, { Model, Mongoose } from 'mongoose';
-const { Schema } = mongoose;
+const mongoose=require('mongoose')
 
-const insititueSchema = new Schema({
-    _id: {
-        typeof: mongoose.Types.ObjectId,
-        index: true,
-        unique: true
-    },
+const sechma = new mongoose.Schema({
     name: {
-        typeof: String,
+        type: String,
         required: true,
     },
     email: {
-        typeof: Email,
+        type: String,
         required: true,
         unique: true
     },
     password: {
-        typeof: String,
+        type: String,
         required: true
     },
     phoneNumber: {
-        typeof: String,
+        type: String,
         required: true,
         unique: true
     },
     code: {
-        typeof: String,
+        type: String,
         required: true,
         unique: true
     },
     address: {
-        typeof: String,
+        type: String,
         required: true,
         unique:true
     },
     role: {
-        typeof: String,
+        type: String,
         required: true
     },
     testCollectionIds: {
-        typeof: [],
-        default: undefined
-    },
+        type: [mongoose.Types.ObjectId]
+        },
     /**we can used that one also
      * { timestamps: true }
      */
     createdOn: {
-        typeof: Date,
+        type: Date,
         default: Date.now
     },
     updatedOn: {
-        typeof: Date,
+        type: Date,
         default: Date.now
     }
-
 });
-const InsititueSchema = mongoose.model('InsititueSchema', insititueSchema);
+const InsititueSchema = mongoose.model('InsititueSchema', sechma);
 module.exports = InsititueSchema;
 

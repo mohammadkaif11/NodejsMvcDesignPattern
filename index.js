@@ -11,10 +11,14 @@ app.use(bodyParser.json());
 app.use(cors());
 
 app.use('/users', require('./Controller/users/users.Controller'));
+app.use('/insititue', require('./Controller/Insititue/Insititue.Controller'));
+
 
 app.get('/', (req, res) => {
     res.send("Hii QMate User");
 })
+
+
 app.use(errorHandler);
 
 app.listen(process.env.PORT || 8080, function () {

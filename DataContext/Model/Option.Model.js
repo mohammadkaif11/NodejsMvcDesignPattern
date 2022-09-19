@@ -1,18 +1,22 @@
-import mongoose, { Model, Mongoose } from 'mongoose';
-const { Schema } = mongoose;
+const mongoose=require('mongoose')
 
-const optionSchema = new Schema({
-    _id: {
-        typeof: mongoose.Types.ObjectId,
-        index: true,
-        unique: true
-    },
+const sechma = new mongoose.Schema({
     //[{value:"ans",isAns:true}]
     optionValues: {
-        typeof: [{}],
+        typeof: [
+         {
+            value:{
+                type:String
+            },
+            isAns:{
+                type:Boolean
+            }
+         }
+
+        ],
         default: undefined
     }
 });
 
-const OptionSchema = mongoose.model('optionSchema', questionSchema);
+const OptionSchema = mongoose.model('OptionSchema', sechma);
 module.exports = OptionSchema;
