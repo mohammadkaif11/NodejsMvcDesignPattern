@@ -12,9 +12,7 @@ const sechma = new mongoose.Schema({
                 type:Boolean
             }
          }
-
         ],
-        default: undefined
     }
 });
 

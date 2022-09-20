@@ -13,7 +13,7 @@ const sechma = new mongoose.Schema({
         type: Number,
         required: true
     },
-    maximumTime: {
+    timeRequired: {
         type: Number,
         unique: true
     },

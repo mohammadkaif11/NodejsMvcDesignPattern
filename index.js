@@ -12,6 +12,9 @@ app.use(cors());
 
 app.use('/users', require('./Controller/users/users.Controller'));
 app.use('/insititue', require('./Controller/Insititue/Insititue.Controller'));
+app.use('/Test', require('./Controller/Test/Test.Controller'));
+app.use('/Question', require('./Controller/Question/Question.Controller'));
+app.use('/Option', require('./Controller/Option/Option.Controller'));
 
 
 app.get('/', (req, res) => {
