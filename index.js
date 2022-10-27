@@ -1,6 +1,6 @@
 const express = require('express')
 const app = express();
-const errorHandler = require('./Helpers/error-handler')
+const apiErrorHandler=require('./Middleware/ApiErrorHandler')
 const cors = require('cors');
 const bodyParser = require('body-parser');
 const connectToMongo=require('./DataContext/DataBase')
@@ -18,11 +18,11 @@ app.use('/Option', require('./Controller/Option/Option.Controller'));
 
 
 app.get('/', (req, res) => {
-    res.send("Hii QMate User");
+   res.send('ApiIsWorkingFine');
 })
 
-
-app.use(errorHandler);
+//adding Golbal ApiErrorHandler
+app.use(apiErrorHandler);
 
 app.listen(process.env.PORT || 8080, function () {
     console.log("Express server listening on port %d in %s mode", this.address().port, app.settings.env);

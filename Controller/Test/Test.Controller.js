@@ -1,15 +1,26 @@
 const express = require('express');
 const router = express.Router();
 const testService = require('../../Service/Test/test.service')
-
+const ApiError = require('../../Helpers/ErrorHandler/ApiError')
+const ApiResponse =require('../../Helpers/ResponseHandler/ApiResponse')
 
 const PostTest = async (req, res, next) => {
     try {
+        const { name, marks, passingmarks, maximumtime } = req.body;
+        if (
+            name == null || name == "" ||
+            marks == null || marks == "" ||
+            passingmarks == null || passingmarks == "" ||
+            maximumtime == null || maximumtime == ""
+        ) {
+            return next(ApiError.badRequest('Name and Marks, PassingMarks, MaximumTime is Required'));
+        }
         const data = await testService.AddTest(req.body);
-        res.json(data);
+        if(data!=null){
+            res.send(ApiResponse.SuccessResponse(202,"Test is save sucessfully",data))
+        }
     } catch (error) {
-        console.log(error)
-        res.send("Some Error Occured");
+        next(error);
     }
 }
 
@@ -25,7 +36,7 @@ const PutTest = async (req, res, next) => {
 
 const DeleteTest = async (req, res, next) => {
     try {
-        var _id=req.query._id;
+        var _id = req.query._id;
         console.log(_id)
         const data = await testService.DeleteTest(_id);
         res.json(data);
@@ -36,7 +47,7 @@ const DeleteTest = async (req, res, next) => {
 }
 
 router.post('/add', PostTest);
-router.post('/update',PutTest)
-router.delete('/delete',DeleteTest)
+router.post('/update', PutTest)
+router.delete('/delete', DeleteTest)
 
 module.exports = router;

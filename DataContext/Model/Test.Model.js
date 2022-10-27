@@ -1,30 +1,31 @@
 const mongoose=require('mongoose')
 
 const sechma = new mongoose.Schema({
-    TestName: {
+    Name: {
         type: String,
         required: true,
     },
-    maximumNumber: {
+    Marks: {
         type: Number,
         required: true,
     },
-    passingNumber: {
+    PassingMarks: {
         type: Number,
         required: true
     },
-    timeRequired: {
+    MaximumTime: {
         type: Number,
         unique: true
     },
-    questionIds: {
-        type: [mongoose.Types.ObjectId]
+    QuestionIds: {
+        type: [mongoose.Types.ObjectId],
+        default:[]
     },
-    createdOn: {
+    CreatedOn: {
         type: Date,
         default: Date.now
     },
-    updatedOn: {
+    UpdatedOn: {
         type: Date,
         default: Date.now
     }
